@@ -56,9 +56,29 @@ git config --list
 
 try it latter
 ==========================
+Delete the configuration:
+
 git config --global --unset user.name
 
 git config --global --unset user.email
+
+To edit the configuration:
+
+git config --global --edit
+
+
+The configuration of type global will be available in ~/.gitconfig
+
+# cat ~/.gitconfig
+
+Other type of configuratiosn are local or SYSTEM
+
+local : configuration is applicable to only current Repo
+
+System: configuration is applicable to every Repo created on VM by any user
+
+
+
 
 
 
