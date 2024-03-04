@@ -210,7 +210,38 @@ merge the chagnes
 
 # git merge feature1 master
 
+==========================================================================
 
+========================================
+Rebase:
+=======================================
+
+1. Squash commit ids 
+
+Create multiple small changes on the branch and commit them separately.
+We want a list of new commits on our branch 
+
+Now choose a set of commits and squash the changes of them in to a single commit that is above it
+
+For this we use 
+
+# git rebase -i <commitid>
+
+2. Squash using the merge command
+========================================
+We want to squash the changes not on the current branch
+
+We want to squash on master branch
+
+git merge --squash feature1 master
+
+The changes will be staged but commits are not merged
+
+User has to manually commit all the changes in single commit id
+
+3. Rebase Vs Merging
+
+# git rebase master
 
 
 
