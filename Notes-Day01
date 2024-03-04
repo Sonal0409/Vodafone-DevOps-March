@@ -180,3 +180,56 @@ Revert command in GIT
 > save the file. Revert will be complete and a new commit id will be generated
 
 # git revert <deletioncommitid>
+
+=========================================================
+Git Branching and Merging
+=======================================================
+
+To check branches on the local repo
+
+# git branch   
+
+Command to create a branch and swtich to the branch
+
+# git checkout -b feature1
+
+You will now be on the feature 1 branch
+
+Make some changes and create new commits
+ # touch file1
+ # git add .
+ # git commit -m "done on feature1"
+
+Now we have to merge the new changes to master branch
+
+switch back to master
+
+# git checkout master
+
+merge the chagnes
+
+# git merge feature1 master
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
