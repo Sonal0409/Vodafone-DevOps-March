@@ -36,6 +36,7 @@ Ansible Adhoc commands
 Ansible playbooks
 Ansible variables, Loops and conditions
 Tags in Ansible
+Jinja2 templates
 Roles in Ansible
 
 
