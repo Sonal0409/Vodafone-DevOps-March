@@ -150,6 +150,10 @@ See commits of a particular file:
 
  git log --graph --all -- index1.html
 
+OR
+
+git log --oneline -M --stat --follow -- index1.html
+
 ==============================================================
 
 Delete a file form LR and WD
