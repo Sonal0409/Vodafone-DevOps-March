@@ -1,0 +1,89 @@
+Demo 1:
+
+Create a working directory, add files and create a local repository
+
+Demo 2:
+
+Add the new files from working directory to staging area and then commit to local repo
+
+Untracked files --> 
+
+Changes to be committed:
+
+Demo 3: 
+
+Take an existing file [File that is committed in LR]
+Make changes on the file 
+Check status of the file using git
+Check what are the changes done on the file that have not been versioned controlled
+Add the changes to the Local repository
+
+
+Git revert Scenario:
+================================
+
+We deleted a file in LR and we committed it -> we will get commit id
+
+But we want the file back then we can use a REVERT operation
+
+In revert operation,
+
+ > git will revert the changes form the given commit id to its previous version 
+
+ > So come change is happening on the LR --> we need to commit that
+
+ > Revert command generates a new commit id
+
+ > A revert command works on a single commit id
+
+Git Reset : It resets the commit history
+
+3 ways:
+
+1. --hard :The commits above the desired HEAD will be deleted 
+the changes from the commits will be deleted permanently.
+
+git reset --hard 21086a4
+
+2. --soft : The commits above the desired HEAD will be deleted 
+the changes from the commits will be moved to staging area.
+
+git reset --soft 83ca0a3
+
+3. --mixed : The commits above the desired HEAD will be deleted 
+the changes from the commits will be moved to Working Directory 
+
+git reset --mixed 1cf827d
+
+========================================
+Rebase:
+=======================================
+
+1. Squash commit ids 
+
+Create multiple small changes on the branch and commit them separately.
+We want a list of new commits on our branch 
+
+Now choose a set of commits and squash the changes of them in to a single commit that is above it
+
+For this we use 
+
+# git rebase -i <commitid>
+
+2. Squash using the merge command
+========================================
+We want to squash the changes not on the current branch
+
+We want to squash on master branch
+
+git merge --squash feature1 master
+
+The changes will be staged but commits are not merged
+
+User has to manually commit all the changes in single commit id
+
+3. Rebase Vs Merging
+
+# git rebase master
+
+
