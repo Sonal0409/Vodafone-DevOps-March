@@ -78,4 +78,122 @@ Clone a remote repository to local machine
 Forking - complete
 ===========================================
 
-==========================================
+
+Continous Integration With Jenkins
+===========================================
+
+Demo 1: Remove Current version of Jenkins from lab and upgrade to new version of jenkins
+
+sudo service jenkins stop
+
+sudo apt-get remove --purge jenkins
+
+sudo apt-get autoremove jenkins
+
+Install Jenkins:
+==============================
+sudo wget -O /usr/share/keyrings/jenkins-keyring.asc https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+
+echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d/jenkins.list > /dev/null
+
+sudo apt-get update
+
+sudo apt-get install jenkins
+
+Go to browser:
+
+localhost:8080
+
+Go to the terminal and execute below command:
+
+cat /var/lib/jenkins/secrets/initialAdminPassword
+
+You will be on the dashboard
+-----------------------------------------------------------------
+
+Create a freestyle job and integrate it with GITHUB repostitory
+
+Demo 1: Create a Jenkisn job that will clone a github repository in jenkins workspace
+
+Create a new job in jenkins
+Click on + sign to create new item/job/project
+Give a name to the job : CloneRepo
+Select freestyle project and click on OK button
+On the project click on Source code management
+Select git option
+Give git hub repo path
+https://github.com/Sonal0409/myproject05Aug
+
+Branch name as ===>  Master
+
+Save the job
+
+Click on Build now
+
+Repository will be cloned in jenkins workspace
+
+You can go to job → workspace folder to see the files
+
+
+Demo 2: Jenkins + maven integration:
+===========================
+
+Jenkins--> Manage Jenkins-->Global Tool configuration
+
+Under GIT==> leave it same 
+
+Under maven ==> lets install it automatically
+Type mymaven and check the install automatically box.
+Save the changes
+
+Job Package Job
+***************************
+
+Go to jenkins--> new item--> Name= Package==> freestyle project
+==> source codemanagement==>select git==> give git repo name https://github.com/Sonal0409/DevOpsClassCodes
+ 
+build ==> invoke top level maven target==>mymaven
+
+ goal = clean install package
+
+==> save==> build now
+==> click on build number and see the console
+
+==> go to workspace ==> target/addressbook.war
+
+================================
+
+Declarative Pipelines:
+
+1. Build Pipeline
+
+2. Condition based parametrized pipeline
+
+3. Shared Libraries
+
+4. Jenkinsfile
+
+5. Multibranch Pipeline
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
