@@ -108,6 +108,10 @@ Go to the terminal and execute below command:
 
 cat /var/lib/jenkins/secrets/initialAdminPassword
 
+Select -> Install suggested Plugins
+
+Give the username as admin and password at admin
+
 You will be on the dashboard
 -----------------------------------------------------------------
 
