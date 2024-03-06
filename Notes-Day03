@@ -46,3 +46,80 @@ pipeline{
     
     
 }
+
+
+
+
+
+
+=============================================
+SHared Libraries Demo
+===========================================
+
+
+@Library('my-shared-library') _
+pipeline{
+    
+    tools{
+        maven 'mymaven'
+    }
+    
+    agent any
+    
+    stages{
+        
+        stage('Checkout Code'){
+            steps{
+                
+                cloneRepo('https://github.com/Sonal0409/DevOpsCodeDemo.git')
+            }
+        }
+        
+        stage('Build Code'){
+            
+            steps{
+                build('Compile')
+            }
+        }
+        
+        stage('check Log')
+    {
+      steps{
+          filterLogs('WARNING', 2)
+      }
+        
+    }
+        
+      
+        
+    }
+    
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
