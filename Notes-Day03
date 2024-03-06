@@ -1,4 +1,6 @@
 Parametrized Build pipeline:
+====================================
+Create a new Job --> select template as pipleinbe and add the below code
 
 pipeline{
     
