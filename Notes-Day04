@@ -86,6 +86,34 @@ Save the playbook.
 
 # ansible-playbook playbook2.yml
 =============================================
+Vars_prompt Section:
+==============================================
+
+- name: Install package and create file
+  hosts: webserver
+  become: true
+  become_user: root
+  vars: # here we write the variables, scope is current playbook
+   path: /tmp/newfile.txt
+  vars_prompt:
+   - name: pkg_name
+     prompt: Enter the package name
+     private: false
+  tasks:
+  - name: Install {{pkg_name}} on the host server
+    package: name={{pkg_name}} state=present
+  - name: Create a file on host server
+    file: path={{path}} state=touch
+
+
+
+
+
+
+
+
+
+
 
 Before we begin next playbook, lets look at Setup module and Fact variable:
 ===========================================
