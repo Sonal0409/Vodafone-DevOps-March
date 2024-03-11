@@ -140,7 +140,39 @@ ansible-playbook playbook_apache.yml
 To check the deployment of the Page:
 Go tot he browser on the lab and give localhost:80
 
+===========================================
+Handlers: Theya re tasks which are executed only when notified.
+Only when the parent task status is "changed" the notify module will notify the hadler task for execution.
+handlers tasks will always run at the end, after all the tasks have been executed.
 
+# vim index.html
+
+Do some change and save the file 
+
+# vim playbook_apache.yml
+
+- name: Deploy html Code file on Apache2
+  hosts: webserver
+  become: true
+  tasks:
+  - name: Execute a command
+    command: hostname -s
+    notify: Execution command status
+  - name: Install apache2 in host servers
+    package: name=apache2 state=present
+  - name: Start the apache server
+    service: name=apache2 state=started
+  - name: Copy a file on apache server
+    copy: src=index.html dest=/var/www/html
+    notify: Restart the apache2 server
+  handlers: # in this section the tasks will be executed only when notified
+  - name: Restart the apache2 server
+    service: name=apache2 state=restarted
+  - name: Execution command status
+    debug: msg="Command executed successfully"
+
+
+# ansible-playbook playbook_apache.yml
 
 
 
