@@ -63,6 +63,8 @@ Execute the playbook:
 
 Variables:
 
+# vim playbook2.yml
+
 ---
 - name: Custom variables 
   hosts: webserver
@@ -70,7 +72,7 @@ Variables:
   become_user: root
   # customize the playbook to run with different packages as required
   vars:  # we write map, its not a list
-   pkg_name: git
+   pkg_name: php
    pkg_state: present
    file_path: /tmp/demo1.txt
    file_state: touch
@@ -80,6 +82,9 @@ Variables:
   - name: create a file on hostserver
     file: path={{file_path}}  state={{file_state}}
 
+Save the playbook.
+
+# ansible-playbook playbook2.yml
 =============================================
 
 Before we begin next playbook, lets look at Setup module and Fact variable:
