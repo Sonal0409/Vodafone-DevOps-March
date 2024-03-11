@@ -105,6 +105,62 @@ Vars_prompt Section:
   - name: Create a file on host server
     file: path={{path}} state=touch
 
+==================================================================
+Deploy index.html code on Apache2 server
+
+# vim index.html
+
+<h1> This file is form Ansible </h1>
+<h1> Created by Sonal </h1>
+
+Save the file
+
+# vim playbook_apache.yml
+
+
+- name: Deploy html Code file on Apache2
+  hosts: webserver
+  become: true
+  tasks:
+  - name: Install apache2 in host servers
+    package: name=apache2 state=present
+  - name: Start the apache server
+    service: name=apache2 state=started
+  - name: Copy a file on apache server
+    copy: src=index.html dest=/var/www/html
+  - name: Restart the apache2 server
+    service: name=apache2 state=restarted
+
+Save the file (:wq!)
+
+Execute the playbook:
+
+ansible-playbook playbook_apache.yml
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
