@@ -137,7 +137,8 @@ Execute the playbook:
 
 ansible-playbook playbook_apache.yml
 
-
+To check the deployment of the Page:
+Go tot he browser on the lab and give localhost:80
 
 
 
