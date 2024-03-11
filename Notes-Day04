@@ -37,14 +37,17 @@ $ ansible webserver -m command -a “uptime”
 Playbooks:
 ==========================================
 
-- hosts: webserver
+- name: debug and register module
+  hosts: webserver
   tasks:
-  - name: Execute a command on the host
+  - name: Print a message
+    debug: msg="Ansible Playbook Execution"
+  - name: Execute a command on the host server
     command: hostname -s
-    register: hostname_output
-  - name: show  the hostname_output
-    debug:
-      var: hostname_output.stdout
+    register: hostname_output  # here we are creating a variable
+  - name: Show the output
+    debug: var=hostname_output.stdout
+
 
 =======================================
 
