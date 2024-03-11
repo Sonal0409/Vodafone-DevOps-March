@@ -37,6 +37,10 @@ $ ansible webserver -m command -a “uptime”
 Playbooks:
 ==========================================
 
+# cd /etc/ansible
+
+# vim playbook1.yml
+
 - name: debug and register module
   hosts: webserver
   tasks:
@@ -47,6 +51,12 @@ Playbooks:
     register: hostname_output  # here we are creating a variable
   - name: Show the output
     debug: var=hostname_output.stdout
+
+Save the file (:wq!)
+
+Execute the playbook: 
+# ansible-playbook playbook1.yml --syntax-check
+# ansible-playbook playbook1.yml 
 
 
 =======================================
