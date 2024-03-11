@@ -199,6 +199,24 @@ Meta - flush handlers:
   - name: Execution command status
     debug: msg="Command executed successfully"
 
+===============================================
+When keyword to add conditions in the playbook.
+
+vim playbook_when.yml
+
+- name: Conditions in ansible
+  hosts: webserver
+  become: true
+  tasks:
+  - name: Install httpd package
+    package: name=httpd state=present
+    when: ansible_distribution != "Ubuntu"
+  - name: Install apchae2 package
+    package: name=apache2 state=present
+    when: ansible_distribution == "Ubuntu"
+  - name: execute a command
+    command: hostname -s
+    when: ansible_distribution == "CentOS" and ansible_distribution_major_version == "8"
 
 
 
@@ -254,7 +272,7 @@ It will return value for given ansible variable.
      var=ansible_default_ipv4.address
 
 
-
+=================================================================
 
 
 
