@@ -1,0 +1,106 @@
+Check Ansible Installation:
+*****************************
+$ ansible --version
+
+Establish SSH connection controller machine and host machine:
+*************************
+Establish SSH key pair in linux system to have SSH connectivity with localhost using the following commands:
+
+$ ssh-keygen -t rsa (Press Enter when asked for File and Paraphrase details)
+
+$ cat .ssh/id_rsa.pub >> .ssh/authorized_keys
+
+[OR] when connecting with public server host
+
+$ ssh-copy-id -i username@ipHost
+
+Add the host ‘localhost’  in ansible host file:
+
+$ vim /etc/ansible/hosts
+
+
+[webserver]
+localhost:42006
+
+
+
+Ad Hoc Commands in Ansible
+
+
+$ ansible webserver -m ping
+$ ansible webserver -m command -a "df -h"
+$ ansible webserver -m command -a “uptime”
+
+
+Playbooks:
+==========================================
+
+- hosts: webserver
+  tasks:
+  - name: Execute a command on the host
+    command: hostname -s
+    register: hostname_output
+  - name: show  the hostname_output
+    debug:
+      var: hostname_output.stdout
+
+=======================================
+
+Variables:
+
+---
+- name: Custom variables 
+  hosts: webserver
+  become: true  # become a root user in order to execute the tasks
+  become_user: root
+  # customize the playbook to run with different packages as required
+  vars:  # we write map, its not a list
+   pkg_name: git
+   pkg_state: present
+   file_path: /tmp/demo1.txt
+   file_state: touch
+  tasks:
+  - name: Install {{pkg_name}}  on hostserver
+    package: name={{pkg_name}} state={{pkg_state}}
+  - name: create a file on hostserver
+    file: path={{file_path}}  state={{file_state}}
+
+=============================================
+
+Before we begin next playbook, lets look at Setup module and Fact variable:
+===========================================
+
+# ansible webserver -m setup
+It gives lot of information
+
+# ansible webserver -m setup | wc -l
+
+It will return total number of lines
+# ansible webserver -m setup -a "filter=ansible_memfree_mb"
+
+It will return value for given ansible variable.
+# ansible webserver -m setup -a "filter=ansible_mem*"
+
+
+# vim playbookfact.yml
+- hosts: webserver
+  tasks:
+  - name: Show Ipaddress of the host servers
+    debug:
+      msg="The ipaddress of host server  is {{ ansible_default_ipv4.address }}"
+  - name: print variable
+    debug: 
+     var=ansible_default_ipv4.address
+
+
+
+
+
+
+
+
+
+
+
+
+
