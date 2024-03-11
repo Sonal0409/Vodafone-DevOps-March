@@ -273,6 +273,26 @@ It will return value for given ansible variable.
 
 
 =================================================================
+Janja2 templating:
+==============================================================
+
+# vim webfile.j2
+
+# This is a jinja2 template
+
+This is an application configuration file
+Localtion of this file is /etc directory
+
+This file is created by {{author}}
+
+The host details are:
+
+Ip address : {{ansible_default_ipv4["address"]}}
+Host_NODE_NAME is : {{ansible_nodename}}
+Host_OS_FAMILY is {{ansible_os_family}}
+
+save the file (:wq!)
+
 
 
 
