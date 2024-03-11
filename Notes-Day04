@@ -8,6 +8,8 @@ Establish SSH key pair in linux system to have SSH connectivity with localhost u
 
 $ ssh-keygen -t rsa (Press Enter when asked for File and Paraphrase details)
 
+$ cd
+
 $ cat .ssh/id_rsa.pub >> .ssh/authorized_keys
 
 [OR] when connecting with public server host
