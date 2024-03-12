@@ -208,6 +208,26 @@ create some files in container and come out of container
 # cd /var/lib/docker/volumes/myvol/_data
 
 =============================================
+Bind Mounts:
+===================
+
+In this case, data will be saved on any directory of host machine
+
+I have got source code for webapplication in github
+
+https://github.com/Sonal0409/ecomm.git
+
+we will clone the code in docker host in a directory
+
+we will mount the directory on a container with image httpd
+
+We will access the application on the container form browser of our machine
+
+# git clone https://github.com/Sonal0409/ecomm.git
+
+# cd ecomm
+
+# docker run -d --name ecomm -v /root/ecomm:/usr/local/apache2/htdocs/ -P  httpd
 
 
 
