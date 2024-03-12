@@ -177,6 +177,37 @@ systemport:containerport
 # docker run --name web2 -d -P httpd
 
 =============================================
+Docker Volumes:
+==========================================
+
+1. Create a docker volume that will preserve the data of a container
+
+> Create a named volume
+
+# docker volume ls
+# docker volume create myvol
+
+> where is the volume created
+
+# docker volume inspect myvol
+
+/var/lib/docker/volumes/myvol/_data
+
+> mount the volume on the container directory
+
+ docker run -it --name cont1 -v myvol:/tmp ubuntu
+
+> preserve data from contaienr to volume
+
+create some files in container and come out of container
+
+> delete container.. data will be there in volume directory
+
+# docker rm -f cont1
+
+# cd /var/lib/docker/volumes/myvol/_data
+
+=============================================
 
 
 
