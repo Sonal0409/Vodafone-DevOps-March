@@ -98,3 +98,60 @@ Now go to ACM machine and copy the ssh key and use publci key fo AWS ec2 instanc
 # ssh-copy-id -i ansiuser@publicipEc2
 
 It will be successfull
+=============================================================
+
+Docker commands:
+==============================================================
+
+
+Run command options in Docker to create a Container:
+==============================================
+
+--name : Give a unique name to the container 
+
+Foreground Mode: (-it)
+=====================
+i : interactive
+t: terminal 
+
+A docker container will created 
+Container will be up & Running
+User will attached to the terminal of the container
+
+# docker run -it --name cont1 ubuntu
+
+Come out of the container & keep container running - Execute on container : CTL pq
+
+Come out of the container & container should be exited - Execute on container: exit 
+
+Go inside the container : attach to its terminal 
+
+# docker attach <containerid>
+
+# exit 
+
+# docker start containername
+
+# docker stop containername 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
