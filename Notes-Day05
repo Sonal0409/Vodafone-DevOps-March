@@ -134,6 +134,50 @@ Go inside the container : attach to its terminal
 
 # docker stop containername 
 
+====================================================
+
+Attach to the terminal of the container from the host machine:
+============================
+
+# docker exec -it <containername> command
+
+# docker exec -it web /bin/bash
+
+
+
+Access app running on the Containers from browser of the machine
+
+
+Port Forwarding OR Port Mapping:
+===================================
+
+By default an application on docker container is avaibale on its exposed port.
+
+It is the users internet that cannot reach the container port
+
+For this we have do port forwarding or mapping in docker
+
+i.e. we have to map a VM free system port with container port
+
+example = 8989:80
+
+systemport:containerport
+
+> If a container is already created, we canot do port forwarding for the container
+
+> port forwarding will be applied at the docker run comamnd itself
+
+> flag for port forwarding (-p)
+
+# docker run --name web1 -d -p 8989:80 nginx
+
+
+> if you want docker to do port mapping then use flag -P
+
+# docker run --name web2 -d -P httpd
+
+=============================================
+
 
 
 
