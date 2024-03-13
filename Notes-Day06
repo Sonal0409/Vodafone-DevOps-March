@@ -1,0 +1,27 @@
+Create Docker Images 
+================================================
+
+1. We can commit a container into an Image 
+
+# docker run -it --name cont01 ubuntu
+
+In the container execute below commands:
+
+    > apt-get update 
+    > apt-get install curl -y
+
+Come out of container  (CTL pq)
+
+# docker commit cont01 image01
+
+
+2. Push your custom image to docker Registry 
+
+      > We have to change the name of the Image, so that it can be pushed to our repository on docker hub 
+        # docker tag image01 sonal04/image01
+
+      # docker login 
+      give dockerhub login
+          dockerhub password
+          
+      # docker push sonal04/image01
