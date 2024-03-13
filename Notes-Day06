@@ -153,6 +153,12 @@ docker run -d -P nodeimage
 Jenkins + Docker Pipeline
 =========================================================
 
+Before we run the pipeline, run the below command on the terminal:
+#  chmod 777 /var/run/docker.sock
+
+Create a job in jenkins of type pipeline
+
+
 pipeline{
     
     agent any
@@ -175,18 +181,35 @@ pipeline{
                 sh 'mvn package'
             }
         }
-
-stage('Build Image'){
+        
+        stage('Build Image'){
             steps{
                 sh 'cp /var/lib/jenkins/workspace/CICDPipeline/target/addressbook.war .'
-                sh 'docker build -t tomcatimage .'
+                sh 'docker build -t tomcatimage:$BUILD_NUMBER .'
             }
         }
-
+        
+        stage('Deploy to Container'){
+            steps{
+                sh 'docker run -d -P tomcatimage:$BUILD_NUMBER'
+            }
+        }
     }
     
     
 }
+
+Check the containers:
+===========================
+
+# docker images
+
+# docker ps --latest
+
+Go to browser and give
+
+localhost:portnumber/addressbook
+
 
 
 
