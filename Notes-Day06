@@ -284,7 +284,34 @@ REMOVE THE TAINT ON THE NODE:
 # kubectl taint node ip-172-31-25-55  node-role.kubernetes.io/master:NoSchedule-
 
 
+cREATE pODS IN KUBERNETES:
+==================================
 
+mkdir mykubefiles
+cd mykubefiles
+
+vim pod-definition.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: pod1
+ labels:
+  author: sonal
+  app: java
+spec:   
+ containers:
+  - name: c1
+    image: nginx
+
+
+Save the file
+
+# kubectl create -f pod-definition.yml
+
+# kubectl get pods
+
+# kubectl get pods --show-labels
 
 
 
