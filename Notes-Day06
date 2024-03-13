@@ -278,9 +278,10 @@ Step 6:
 
 # kubectl get nodes
 
+REMOVE THE TAINT ON THE NODE:
+======================================
 
-
-
+# kubectl taint node ip-172-31-25-55  node-role.kubernetes.io/master:NoSchedule-
 
 
 
