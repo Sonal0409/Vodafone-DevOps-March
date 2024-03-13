@@ -175,6 +175,14 @@ pipeline{
                 sh 'mvn package'
             }
         }
+
+stage('Build Image'){
+            steps{
+                sh 'cp /var/lib/jenkins/workspace/CICDPipeline/target/addressbook.war .'
+                sh 'docker build -t tomcatimage .'
+            }
+        }
+
     }
     
     
