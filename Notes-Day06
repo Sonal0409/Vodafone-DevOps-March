@@ -25,3 +25,79 @@ Come out of container  (CTL pq)
           dockerhub password
           
       # docker push sonal04/image01
+
+
+==================================================================
+
+Creating an Image from Dockerfile
+=================================================
+
+A dockerfile consist of following keywords
+
+1. FROM -> 
+Dockerfile starts with FROM keyword 
+Dockerfile will consist of only 1 FROM keyword
+FROM keyword defines the name of the Base Image
+Most of custom images are always based upon Docker Base Image 
+
+2. RUN -> 
+With this keyword we can run linux commands to install, upgrade or delete packages 
+Any linux command to be executed on the container, we can give with this keyword 
+We can have run keyword many time in the dockerfile 
+
+3. ENV -> We can provide environment variables that can be used in the dockerfile 
+
+4. LABEL  -> Give maintainer information about the Dockerfile
+
+5.COPY  ->
+This keyword is used to copy a file from docker host machine to the containers directory 
+It cannot copy tar files
+
+6. ADD ->
+This keyword is used to copy a file from docker host machine to the containers directory 
+It can also copy tar files
+
+7. EXPOSE -> Expose the container to a port number 
+
+9.CMD
+with this keyword we will give commands like to start an application or run a script
+This command coming from the image on the container can be replaced by a new command that is passed by the user at runtime
+
+10.ENTRYPOINT
+with this keyword we will give commands like to start an application or run a script
+
+11. WORKDIR
+TO create a directory in which the commands will be executed
+
+12. VOLUME : to attach default storage to container
+
+=============================
+
+# mkdir mydockerfiles
+# cd mydockerfiles
+# vim index.html
+
+This file is form Docker 
+
+save the file 
+
+
+
+# vim dockerfile 
+
+# this is nginx deployment
+
+FROM ubuntu
+RUN apt-get update
+ENV pkg_name nginx
+RUN apt-get install $pkg_name -y
+COPY index.html /var/www/html
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
+
+
+Save it
+
+Build docker file:
+
+# docker build -t mynginximage .
