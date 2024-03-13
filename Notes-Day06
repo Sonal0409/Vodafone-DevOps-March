@@ -266,6 +266,18 @@ Step 4:
   sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 
+Step 5:
+## set up the  Calico network
+
+sudo kubectl apply -f https://raw.githubusercontent.com/projectcalico/calico/v3.24.1/manifests/calico.yaml
+
+
+Step 6:
+
+#### check if Kube Master is ready or not
+
+# kubectl get nodes
+
 
 
 
