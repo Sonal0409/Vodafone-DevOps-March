@@ -137,3 +137,19 @@ Save it
 Build docker file:
 
 # docker build -t mynginximage .
+
+=======================================================
+https://github.com/Sonal0409/nodejsappDockerfile.git
+
+git clone https://github.com/Sonal0409/nodejsappDockerfile.git
+
+cd nodejsappDockerfile
+
+docker build -t nodeimage .
+
+docker run -d -P nodeimage
+
+========================================================
+
+
+
