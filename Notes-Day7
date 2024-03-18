@@ -196,7 +196,12 @@ Monitoring Pods/Nodes: Metrics Server
 
 # kubectl top pods
 
+==========================================================
+Deploy a Deployment object, HPA and service objetc 
 
+# kubectl create -f https://raw.githubusercontent.com/Sonal0409/Vodafone-Kubernetes-Notes/main/Day3-Notes/hpa/hpa.yml
+
+# kubectl get all
 
 
 
