@@ -1,5 +1,5 @@
 
-Kubernetes Service:
+Kubernetes Service: ClusterIP
 ==========================================
 
 Create an Application POD
@@ -79,7 +79,7 @@ spec:
 
 # curl mysvc1
 
-
+=============================================================
 
 
 
