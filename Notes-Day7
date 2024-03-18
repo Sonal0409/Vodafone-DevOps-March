@@ -108,7 +108,21 @@ copy the 5 digit node port number
 
 go to the browser and give localhost:portnumber
 
+=================================================
+Service of type Load Balancer:
+===================================================
 
+apiVersion: v1
+kind: Service
+metadata:
+ name: mysvc
+spec:
+ type: LoadBalancer
+ ports:
+  - targetPort: 80
+    port: 80
+ selector:
+  type: webserver
 
 
 
