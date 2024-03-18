@@ -1,0 +1,85 @@
+
+Kubernetes Service:
+==========================================
+
+Create an Application POD
+
+vim pod-nginx.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: pod1
+ labels:
+  author: sonal
+  type: webserver
+spec:
+ containers:
+  - name: c1
+    image: nginx
+
+
+# kubectl create -f pod-nginx.yml
+
+
+
+Create a service of type ClusterIP
+
+
+vim service1.yml
+
+
+apiVersion: v1
+kind: Service
+metadata: 
+ name: mysvc1
+spec:
+ type: ClusterIP
+ selector:
+  type: webserver
+ ports:
+ - targetPort: 80
+   port: 80
+
+
+# kubectl create -f service1.yml
+
+# kubectl get service
+
+# kubectl get endpoints
+
+
+Create a test pod- to send request to service
+
+
+vim tetspod.yml
+
+apiVersion: v1
+kind: Pod
+metadata:
+ name: testpod
+ labels:
+  role: dev
+spec:
+ containers:
+  - name: c1
+    image: ubuntu
+    args: [/bin/bash, -c, 'sleep 6000']
+
+
+# kubectl create -f testpod.yml
+
+# kubectl get pods -o wide
+
+# kubectl exec -it testpod -- bash
+
+# apt-get update
+
+# apt-get install curl -y
+
+# curl mysvc1
+
+
+
+
+
