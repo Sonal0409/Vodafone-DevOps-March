@@ -204,6 +204,14 @@ Deploy a Deployment object, HPA and service objetc
 # kubectl get all
 
 
+Open a new terminal
+
+# sudo su -
+
+execute below command, pls change the service Ipaddress to your cluster service IP
+
+kubectl run -i --tty load-generator --rm --image=busybox --restart=Never -- /bin/sh -c "while sleep 0.01; do wget -q -O- http://<clusterIp>:80; done"
+
 
 
 
