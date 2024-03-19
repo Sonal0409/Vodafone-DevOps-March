@@ -92,10 +92,30 @@ data "aws_ami" "example" {
 
 }
 
+resource "aws_instance" "myec2" {
+
+  ami           = data.aws_ami.myami.id
+
+  instance_type = "t2.micro"
+
+  tags = {
+
+    Name = "terraform-instance"
+
+  }
+
+}
 
 Save the file and exeucte the code
 
 # terraform apply
+
+=========================================
+
+variables Demo:
+=======================================
+
+vim variables.tf
 
 
 
