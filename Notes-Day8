@@ -72,7 +72,30 @@ Save the file
 give yes and press enter key
 
 
+Data block 
+===============================
 
+In the same configuration file, add the data block above the aws_instance resource block
+
+
+
+data "aws_ami" "example" {
+  most_recent      = true
+  owners           = ["amazon"]
+  filter {
+
+    name   = "name"
+
+    values = ["amzn2-ami-hvm*"]
+
+  }
+
+}
+
+
+Save the file and exeucte the code
+
+# terraform apply
 
 
 
