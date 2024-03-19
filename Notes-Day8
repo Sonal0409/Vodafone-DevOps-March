@@ -20,3 +20,34 @@ Download Using the binary:
 Close the terminal and restart the terminal
 
 # terraform --version
+
+=====================================
+
+# mkdir myterrafromfiles
+# cd myterraformfiles
+# vim aws_infra.tf
+
+provider "aws" {
+
+  region     = "us-east-1"
+  shared_credentials_files = ["~/.aws/credentials"]
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
