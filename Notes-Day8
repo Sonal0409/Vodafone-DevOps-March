@@ -38,8 +38,38 @@ Save the file and execute below command to download terraform provider plugin
 
 # terraform init
 
+In the same configuragtion file add the resource block
+
+# vim aws_infra.tf
+
+resource "aws_instance" "myec2" {
+
+  ami           = "ami-080e1f13689e07408"
+
+  instance_type = "t2.micro"
 
 
+
+  tags = {
+
+    Name = "terraform-instance"
+
+  }
+
+
+
+}
+
+
+Save the file
+
+# terraform validate
+
+# terraform plan
+
+# terraform apply
+
+give yes and press enter key
 
 
 
